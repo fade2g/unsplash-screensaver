@@ -1,0 +1,49 @@
+document,
+body,
+image {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  background-color: black;
+}
+
+@keyframes resize {
+  0% {
+    left: -5vw;
+    right: 5vw;
+    top: -5vw;
+    bottom: 5vw;
+    width: 110vw;
+    height: 110vh;
+    filter: brightness(0%)  saturate(0%)
+  }
+  100% {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    filter: brightness(50%)  saturate(40%)
+  }
+}
+
+#background-holder {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  animation-name: resize;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  object-fit: cover;
+  filter: brightness(50%) saturate(40%);
+}
