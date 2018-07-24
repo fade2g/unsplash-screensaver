@@ -8,8 +8,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body id="body">
     <img id="background-holder" src="https://source.unsplash.com/collection/2392731/1600x900" />
+
+    <script>
+        let urlParams;
+        // const defaultCollection = 2392731;
+        (window.onpopstate = function () {
+            var match,
+                pl = /\+/g,  // Regex for replacing addition symbol with a space
+                search = /([^&=]+)=?([^&]*)/g,
+                decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+                query = window.location.search.substring(1);
+
+            urlParams = {};
+            while (match = search.exec(query))
+                urlParams[decode(match[1])] = decode(match[2]);
+        })();
+        // handle optional animations
+        let imgElement = document.getElementById("background-holder");
+        let animationNames = [];
+        if (urlParams["resize"]) {
+            animationNames.push("resize " + urlParams["resize"] +"s");
+        };
+        if (urlParams["fadein"]) {
+            animationNames.push("fadein " + urlParams["fadein"] +"s");
+        };
+        if (animationNames.length > 0) {
+            imgElement.style.animation = animationNames.join(", ");
+        }
+        // provide specific collection
+        let collection = urlParams["collection"];
+        if (collection) {
+            imgElement.src = `https://source.unsplash.com/collection/${collection}/1600x900`;
+        }
+    </script>
 </body>
 
 </html>

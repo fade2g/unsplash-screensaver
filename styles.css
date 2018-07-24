@@ -19,7 +19,6 @@ body {
     bottom: 5vw;
     width: 110vw;
     height: 110vh;
-    filter: brightness(0%)  saturate(0%)
   }
   100% {
     width: 100vw;
@@ -28,7 +27,15 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
-    filter: brightness(50%)  saturate(40%)
+  }
+}
+
+@keyframes fadein {
+  0% {
+    filter: brightness(0%) saturate(0%);
+  }
+  100% {
+    filter: brightness(50%) saturate(40%);
   }
 }
 
@@ -41,9 +48,7 @@ body {
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  animation-name: resize;
-  animation-duration: 5s;
-  animation-timing-function: ease-in-out;
   object-fit: cover;
   filter: brightness(50%) saturate(40%);
+  animation-timing-function: ease-in;
 }
